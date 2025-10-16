@@ -1,42 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_training_template/app.dart';
+import 'package:flutter_training_template/core_state.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(onPressed: () => print('Hello, Flutter Training!'), child: Text('Print!')),
-          ],
-        ),
-      ),
-    );
-  }
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CoreState(),
+      child: const MyApp()
+    )
+  );
 }
